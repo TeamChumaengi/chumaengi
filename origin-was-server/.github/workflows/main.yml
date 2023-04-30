@@ -13,10 +13,11 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     environment: production
-    env:
-      working-directory: ./origin-was-server
 
     steps:
+      - name: Change Directory
+        run: cd origin-was-server
+
       - name: Checkout
         uses: actions/checkout@v2
 
