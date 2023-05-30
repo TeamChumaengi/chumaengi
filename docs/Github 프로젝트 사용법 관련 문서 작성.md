@@ -1,10 +1,15 @@
 ## Github Project 사용법
 
 ### 1. Issue or todo 발행
+
 자신이 할 작업에 대해서 먼저 Issue or todo 를 발행
+
 Issue : 작업, 개선 사항 및 버그 관련 사항
+
 Todo : 앞으로 해야할 일
+
 In Progress : 작업중
+
 Done : 작업 완료
 
 ![image](https://github.com/TeamChumaengi/chumaengi/assets/93571332/9f41b717-5d1d-4b84-a56c-65684f9463ba)
