@@ -52,7 +52,7 @@ Commit Message 경우 반드시 위에 양식대로 작성
 
 [#(issue 번호)] (convention type): (Item 에서 작성한 체크리스트 내용)
 
-- Convention Type 의 경우 아래의 양식을 따르도록 한다.
+**굵게**Convention Type 의 경우 아래의 양식을 따르도록 한다.
 
 - add: 파일 추가
  
