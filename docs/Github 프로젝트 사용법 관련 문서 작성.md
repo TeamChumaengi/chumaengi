@@ -6,12 +6,19 @@ Issue : 작업, 개선 사항 및 버그 관련 사항
 Todo : 앞으로 해야할 일
 In Progress : 작업중
 Done : 작업 완료
+
 ![image](https://github.com/TeamChumaengi/chumaengi/assets/93571332/9f41b717-5d1d-4b84-a56c-65684f9463ba)
+
 ![image](https://github.com/TeamChumaengi/chumaengi/assets/93571332/09d17d4a-ea66-45d3-b96e-7645a89a27a4)
+
 ![image](https://github.com/TeamChumaengi/chumaengi/assets/93571332/5f4a6f98-3292-4e88-a8bd-529f58fccae1)
+
 ![image](https://github.com/TeamChumaengi/chumaengi/assets/93571332/5aed029e-762b-4443-89d6-bc2f43baa870)
+
 ![image](https://github.com/TeamChumaengi/chumaengi/assets/93571332/b93c74de-5d32-4e2f-b8ab-79ef672546c5)
+
 ![image](https://github.com/TeamChumaengi/chumaengi/assets/93571332/a21e22cd-d3c5-4cd2-a62d-d8a30a17916f)
+
 ![image](https://github.com/TeamChumaengi/chumaengi/assets/93571332/e609552c-8bfa-4ef6-a627-5e6de370dcf2)
 
  
