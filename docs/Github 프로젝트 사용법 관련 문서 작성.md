@@ -44,7 +44,7 @@ Assignees (작업 진행할 사람), Labels (해당 작업 분류), Status (상�
  
 작업을 진행할 branch 선택 (문서 작성의 경우 가능한 본인 이름 branch 로 진행)
 
-이후 main 으로 merge 진행할 경우 <U>반드시 PR 진행</U> !!
+이후 main 으로 merge 진행할 경우 **반드시 PR 진행** !!
 
 ![image](https://github.com/TeamChumaengi/chumaengi/assets/93571332/982309df-d1df-4fa9-bf6a-9a2b1276ec58)
 
