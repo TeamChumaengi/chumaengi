@@ -8,9 +8,8 @@ assignees: ''
 ---
 
 ### Descride the Issue
-- [ ] what to do
-- [ ] what to do
-- [ ] what to do
+- * what to do
+- * what to do
 
 ### To Do
 - [ ] detail
