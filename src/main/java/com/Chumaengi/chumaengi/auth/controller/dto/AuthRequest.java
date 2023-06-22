@@ -7,19 +7,19 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AuthRequest {
+    private String name;
+
     private String email;
 
     private String password;
 
     private String nickname;
 
-    private String name;
-
     @Builder
-    public AuthRequest(String email, String password, String nickname, String name){
+    public AuthRequest(String name, String email, String password, String nickname){
+        this.name = name;
         this.email = email;
         this.password = password;
         this.nickname = nickname;
-        this.name = name;
     }
 }

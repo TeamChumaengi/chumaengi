@@ -17,11 +17,11 @@ import java.util.List;
 public class AuthResponse {
     private Long id;
 
+    private String name;
+
     private String email;
 
     private String nickname;
-
-    private String name;
 
     private List<Authority> roles = new ArrayList<>();
 
@@ -29,9 +29,9 @@ public class AuthResponse {
 
     public AuthResponse(Member member) {
         this.id = member.getId();
+        this.name = member.getName();
         this.email = member.getEmail();
         this.nickname = member.getNickname();
-        this.name = member.getName();
         this.roles = member.getRoles();
     }
 }
