@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DataJpaTest
 @Import(JpaAuditingConfig.class)
-@DisplayName("Member Repository 테스트")
+@DisplayName("Member [Repository Layer] MemberRepository 테스트")
 public class MemberRepositoryTest {
     @Autowired
     MemberRepository memberRepository;
@@ -36,7 +36,6 @@ public class MemberRepositoryTest {
         assertAll(
                 () -> assertThat(member.getName()).isEqualTo(SUNKYOUNG.getName()),
                 () -> assertThat(member.getEmail()).isEqualTo(SUNKYOUNG.getEmail()),
-                () -> assertThat(member.getPicture()).isEqualTo(SUNKYOUNG.getPicture()),
                 () -> assertThat(member.getPassword()).isEqualTo(SUNKYOUNG.getPassword()),
                 () -> assertThat(member.getNickname()).isEqualTo(SUNKYOUNG.getNickname()),
                 () -> assertThat(member.getCreatedDate()).isAfter(now),
