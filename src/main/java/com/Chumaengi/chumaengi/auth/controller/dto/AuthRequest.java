@@ -2,10 +2,10 @@ package com.Chumaengi.chumaengi.auth.controller.dto;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Getter
-@Setter
+@NoArgsConstructor
 public class AuthRequest {
     private String name;
 
