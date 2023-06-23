@@ -13,6 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name="auth")
 public class Authority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
