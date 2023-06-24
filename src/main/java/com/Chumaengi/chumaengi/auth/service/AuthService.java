@@ -51,6 +51,12 @@ public class AuthService {
         }
     }
 
+    private void validDuplicateMemberByNickname(String nickname) {
+        if (memberRepository.existsByNickname(nickname)) {
+            throw ChumaengiException.type(AuthErrorCode.DUPLICATE_NICKNAME);
+        }
+    }
+
     @Transactional
     public AuthResponse login(AuthRequest request) {
         Member member = memberFindService.findByEmail(request.getEmail());
