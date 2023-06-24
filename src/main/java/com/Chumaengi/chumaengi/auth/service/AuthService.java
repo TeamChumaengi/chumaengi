@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collections;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class AuthService {
 
@@ -27,8 +27,9 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
 
-    public Long signup(AuthRequest request) {
-        validDuplicateUserByEmail(request.getEmail());
+    @Transactional
+    public boolean signup(AuthRequest request) {
+        validDuplicateMemberByEmail(request.getEmail());
 
         Member member = Member.builder()
                 .email(request.getEmail())
@@ -39,19 +40,21 @@ public class AuthService {
 
         member.setRoles(Collections.singletonList(Authority.builder().name("ROLE_USER").build()));
 
-        return memberRepository.save(member).getId();
+        memberRepository.save(member);
+
+        return true;
     }
 
-    private void validDuplicateUserByEmail(String email) {
+    private void validDuplicateMemberByEmail(String email) {
         if (memberRepository.existsByEmail(email)) {
             throw ChumaengiException.type(AuthErrorCode.DUPLICATE_EMAIL);
         }
     }
 
+    @Transactional
     public AuthResponse login(AuthRequest request) {
-        validatePassword(request.getPassword(), request.getPassword());
-
         Member member = memberFindService.findByEmail(request.getEmail());
+        validatePassword(member.getPassword(), request.getPassword());
 
         return AuthResponse.builder()
                 .id(member.getId())
@@ -65,7 +68,7 @@ public class AuthService {
     }
 
     private void validatePassword(String encodedPassword, String rawPassword) {
-        if (!PasswordEncoderFactories.createDelegatingPasswordEncoder().matches(rawPassword, encodedPassword)) {
+        if (!passwordEncoder.matches(rawPassword, encodedPassword)) {
             throw ChumaengiException.type(AuthErrorCode.WRONG_PASSWORD);
         }
     }
