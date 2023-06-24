@@ -77,6 +77,53 @@ public class AuthApiControllerTest extends ControllerTest{
         }
 
         @Test
+        @DisplayName("중복되는 닉네임이 있으면 회원가입에 실패한다")
+        void throwExceptionByDuplicateNickname() throws Exception {
+            //given
+            doThrow(ChumaengiException.type(AuthErrorCode.DUPLICATE_NICKNAME))
+                    .when(authService)
+                    .signup(any());
+
+            //when
+            final AuthRequest request = createAuthRequest();
+            MockHttpServletRequestBuilder requestBuilder = RestDocumentationRequestBuilders
+                    .post(BASE_URL)
+                    .contentType(APPLICATION_JSON)
+                    .content(convertObjectToJson(request));
+
+            //then
+            final AuthErrorCode expectedError = AuthErrorCode.DUPLICATE_NICKNAME;
+            mockMvc.perform(requestBuilder)
+                    .andExpectAll(
+                            status().isConflict(),
+                            jsonPath("$.status").exists(),
+                            jsonPath("$.status").value(expectedError.getStatus().value()),
+                            jsonPath("$.errorCode").exists(),
+                            jsonPath("$.errorCode").value(expectedError.getErrorCode()),
+                            jsonPath("$.message").exists(),
+                            jsonPath("$.message").value(expectedError.getMessage())
+                    )
+                    .andDo(
+                            document(
+                                    "AuthApi/Signup/Failure/Case2",
+                                    applyRequestPreprocessor(),
+                                    applyResponsePreprocessor(),
+                                    requestFields(
+                                            fieldWithPath("name").description("이름"),
+                                            fieldWithPath("email").description("이메일"),
+                                            fieldWithPath("password").description("비밀번호"),
+                                            fieldWithPath("nickname").description("닉네임")
+                                    ),
+                                    responseFields(
+                                            fieldWithPath("status").description("HTTP 상태 코드"),
+                                            fieldWithPath("errorCode").description("커스텀 예외 코드"),
+                                            fieldWithPath("message").description("예외 메시지")
+                                    )
+                            )
+                    );
+        }
+
+        @Test
         @DisplayName("회원가입을 성공한다")
         void success() throws Exception {
             //given
