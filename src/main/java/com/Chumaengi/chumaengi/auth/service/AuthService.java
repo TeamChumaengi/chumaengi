@@ -30,6 +30,7 @@ public class AuthService {
     @Transactional
     public boolean signup(AuthRequest request) {
         validDuplicateMemberByEmail(request.getEmail());
+        validDuplicateMemberByNickname(request.getNickname());
 
         Member member = Member.builder()
                 .email(request.getEmail())
