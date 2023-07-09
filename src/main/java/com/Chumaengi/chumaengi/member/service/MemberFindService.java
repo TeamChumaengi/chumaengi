@@ -1,6 +1,6 @@
 package com.Chumaengi.chumaengi.member.service;
 
-import com.Chumaengi.chumaengi.common.exception.ChumaengiException;
+import com.Chumaengi.chumaengi.global.exception.ChumaengiException;
 import com.Chumaengi.chumaengi.member.domain.Member;
 import com.Chumaengi.chumaengi.member.domain.MemberRepository;
 import com.Chumaengi.chumaengi.member.exception.MemberErrorCode;

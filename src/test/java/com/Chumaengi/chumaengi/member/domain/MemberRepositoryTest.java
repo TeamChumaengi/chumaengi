@@ -1,6 +1,6 @@
 package com.Chumaengi.chumaengi.member.domain;
 
-import com.Chumaengi.chumaengi.common.config.JpaAuditingConfig;
+import com.Chumaengi.chumaengi.global.config.JpaAuditingConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

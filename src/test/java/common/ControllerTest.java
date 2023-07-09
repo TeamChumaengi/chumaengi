@@ -3,7 +3,7 @@ package common;
 import com.Chumaengi.chumaengi.auth.controller.AuthApiController;
 import com.Chumaengi.chumaengi.auth.security.JwtProvider;
 import com.Chumaengi.chumaengi.auth.service.AuthService;
-import com.Chumaengi.chumaengi.common.config.SecurityConfig;
+import com.Chumaengi.chumaengi.global.config.SecurityConfig;
 import com.Chumaengi.chumaengi.member.service.MemberFindService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
