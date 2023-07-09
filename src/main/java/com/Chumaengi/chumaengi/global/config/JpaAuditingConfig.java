@@ -1,4 +1,4 @@
-package com.Chumaengi.chumaengi.common.config;
+package com.Chumaengi.chumaengi.global.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

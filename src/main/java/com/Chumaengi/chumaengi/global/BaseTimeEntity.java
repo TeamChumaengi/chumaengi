@@ -1,4 +1,4 @@
-package com.Chumaengi.chumaengi.common;
+package com.Chumaengi.chumaengi.global;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

@@ -1,4 +1,4 @@
-package com.Chumaengi.chumaengi.common.exception;
+package com.Chumaengi.chumaengi.global.exception;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

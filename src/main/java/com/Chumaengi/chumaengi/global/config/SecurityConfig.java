@@ -1,4 +1,4 @@
-package com.Chumaengi.chumaengi.common.config;
+package com.Chumaengi.chumaengi.global.config;
 
 import com.Chumaengi.chumaengi.auth.security.JwtAuthenticationFilter;
 import com.Chumaengi.chumaengi.auth.security.JwtProvider;

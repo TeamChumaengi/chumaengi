@@ -1,4 +1,4 @@
-package com.Chumaengi.chumaengi.common.exception;
+package com.Chumaengi.chumaengi.global.exception;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

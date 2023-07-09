@@ -1,6 +1,6 @@
 package com.Chumaengi.chumaengi.member.exception;
 
-import com.Chumaengi.chumaengi.common.exception.ErrorCode;
+import com.Chumaengi.chumaengi.global.exception.ErrorCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

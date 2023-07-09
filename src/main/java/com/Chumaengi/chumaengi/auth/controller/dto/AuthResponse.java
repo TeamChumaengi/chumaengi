@@ -25,7 +25,7 @@ public class AuthResponse {
 
     private List<Authority> roles = new ArrayList<>();
 
-    private String token;
+    private TokenResponse token;
 
     public AuthResponse(Member member) {
         this.id = member.getId();

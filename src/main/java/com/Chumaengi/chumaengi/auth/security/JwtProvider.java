@@ -1,10 +1,7 @@
 package com.Chumaengi.chumaengi.auth.security;
 
 import com.Chumaengi.chumaengi.member.domain.Authority;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -60,6 +57,15 @@ public class JwtProvider {
 
     // 토큰에 담겨있는 유저 account 획득
     public String getAccount(String token) {
+        // 만료된 토큰에 대해 parseClaimsJws 수행 -> io.jsonwebtoken.ExpiredJwtException 발생한다.
+        try {
+            Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token).getBody().getSubject();
+        } catch (ExpiredJwtException e) {
+            e.printStackTrace();
+            return e.getClaims().getSubject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token).getBody().getSubject();
     }
 
