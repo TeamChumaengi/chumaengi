@@ -2,15 +2,15 @@ package com.Chumaengi.chumaengi.auth.service;
 
 import com.Chumaengi.chumaengi.auth.controller.dto.AuthRequest;
 import com.Chumaengi.chumaengi.auth.controller.dto.AuthResponse;
+import com.Chumaengi.chumaengi.auth.controller.dto.TokenResponse;
 import com.Chumaengi.chumaengi.auth.exception.AuthErrorCode;
 import com.Chumaengi.chumaengi.auth.security.JwtProvider;
-import com.Chumaengi.chumaengi.common.exception.ChumaengiException;
+import com.Chumaengi.chumaengi.global.exception.ChumaengiException;
 import com.Chumaengi.chumaengi.member.domain.Authority;
 import com.Chumaengi.chumaengi.member.domain.Member;
 import com.Chumaengi.chumaengi.member.domain.MemberRepository;
 import com.Chumaengi.chumaengi.member.service.MemberFindService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +26,7 @@ public class AuthService {
     private final MemberFindService memberFindService;
     private final PasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
+    private final TokenService tokenService;
 
     @Transactional
     public boolean signup(AuthRequest request) {
@@ -63,13 +64,18 @@ public class AuthService {
         Member member = memberFindService.findByEmail(request.getEmail());
         validatePassword(member.getPassword(), request.getPassword());
 
+        // 로그인 성공 후 refreshToken 발급
+        member.setRefreshToken(tokenService.createRefreshToken(member));
         return AuthResponse.builder()
                 .id(member.getId())
                 .email(member.getEmail())
                 .name(member.getName())
                 .nickname(member.getNickname())
                 .roles(member.getRoles())
-                .token(jwtProvider.createToken(member.getEmail(), member.getRoles()))
+                .token(TokenResponse.builder()
+                        .access_token(jwtProvider.createToken(member.getEmail(), member.getRoles()))
+                        .refresh_token(member.getRefreshToken())
+                        .build())
                 .build();
 
     }
@@ -82,9 +88,7 @@ public class AuthService {
 
     public AuthResponse getMember(String email) {
         Member member = memberFindService.findByEmail(email);
-
         return new AuthResponse(member);
     }
-
 }
 
