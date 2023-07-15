@@ -1,11 +1,14 @@
 package com.Chumaengi.chumaengi.member.domain;
 
+import com.Chumaengi.chumaengi.board.domain.Board;
 import com.Chumaengi.chumaengi.global.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static javax.persistence.CascadeType.PERSIST;
 
 @Getter
 @Builder
@@ -36,6 +39,10 @@ public class Member extends BaseTimeEntity {
     @OneToMany(mappedBy = "member", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @Builder.Default
     private List<Authority> roles = new ArrayList<>();
+
+    // 회원 탈퇴시 작성한 게시글 모두 삭제
+    @OneToMany(mappedBy = "writer", cascade = PERSIST, orphanRemoval = true)
+    private List<Board> boardList = new ArrayList<>();
 
     @Builder
     public Member(String name, String email, String password, String nickname) {

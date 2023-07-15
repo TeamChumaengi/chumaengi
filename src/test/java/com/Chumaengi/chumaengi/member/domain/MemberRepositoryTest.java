@@ -22,7 +22,7 @@ public class MemberRepositoryTest {
     MemberRepository memberRepository;
 
     @Test
-    @DisplayName("회원을 저장한다")
+    @DisplayName("회원을 생성한다")
     void saveMember() {
         //given
         memberRepository.save(SUNKYOUNG.toMember());
