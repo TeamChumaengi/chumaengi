@@ -68,4 +68,10 @@ public class Board extends BaseTimeEntity {
                 .findFirst()
                 .orElseThrow(() -> new ChumaengiException(BoardErrorCode.CATEGORY_NOT_FOUND));
     }
+
+    public void update (String updateTitle, String updateContent, String updateCategory) {
+        this.title = updateTitle;
+        this.content = updateContent;
+        this.category = categoryStringToEnum(updateCategory);
+    }
 }
