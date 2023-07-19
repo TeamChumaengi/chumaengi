@@ -30,7 +30,7 @@ public class TokenService {
     public String createRefreshToken(Member member) {
 
         String refresh_token = UUID.randomUUID().toString();
-        Token token = tokenRepository.save(Token.issueRefreshToken(member.getId(), refresh_token, 600));
+        Token token = tokenRepository.save(Token.issueRefreshToken(member.getId(), refresh_token, 6000));
 
         return token.getRefresh_token();
     }
@@ -46,7 +46,7 @@ public class TokenService {
             // refresh 토큰 만료일자가 10초 미만이라면 새로운 refresh 토큰 부여
             if(token.getExpiration() < 10) {
                 token.updateRefreshToken(refreshToken);
-                tokenRepository.save(Token.issueRefreshToken(member.getId(), refreshToken, 600));
+                tokenRepository.save(Token.issueRefreshToken(member.getId(), refreshToken, 6000));
             }
 
             // 토큰이 같은지 비교, 다르다면 유효하지 않은 토큰
