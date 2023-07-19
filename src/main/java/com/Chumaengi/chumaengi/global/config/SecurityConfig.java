@@ -64,7 +64,7 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers("/signup", "/login", "/refresh","/h2-console/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasRole("USER")
+                .antMatchers("/user/**", "/boards/**").hasRole("USER")
                 .anyRequest().denyAll()
                 .and()
                 // JWT 인증 필터 적용
