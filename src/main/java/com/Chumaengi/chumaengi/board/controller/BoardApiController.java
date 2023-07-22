@@ -11,7 +11,7 @@ import java.net.URI;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/boards/{writerId}")
+@RequestMapping("/api/boards/{writerId}")
 public class BoardApiController {
     private final BoardService boardService;
 
