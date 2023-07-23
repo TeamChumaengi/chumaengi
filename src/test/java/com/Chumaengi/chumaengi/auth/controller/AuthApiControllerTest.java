@@ -4,7 +4,7 @@ import com.Chumaengi.chumaengi.auth.controller.dto.AuthRequest;
 import com.Chumaengi.chumaengi.auth.exception.AuthErrorCode;
 import com.Chumaengi.chumaengi.global.exception.ChumaengiException;
 import com.Chumaengi.chumaengi.member.exception.MemberErrorCode;
-import common.ControllerTest;
+import com.Chumaengi.chumaengi.common.ControllerTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

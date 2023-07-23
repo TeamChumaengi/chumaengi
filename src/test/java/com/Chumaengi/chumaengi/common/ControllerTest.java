@@ -1,4 +1,4 @@
-package common;
+package com.Chumaengi.chumaengi.common;
 
 import com.Chumaengi.chumaengi.auth.controller.AuthApiController;
 import com.Chumaengi.chumaengi.auth.security.JwtProvider;
