@@ -22,16 +22,16 @@ public class Token {
     @JsonIgnore
     private Long id;
 
-    private String refresh_token;
+    private String refreshToken;
 
     @TimeToLive(unit = TimeUnit.SECONDS)
     private Integer expiration;
 
-    public static Token issueRefreshToken(Long id, String refresh_token, Integer expiration) {
-        return new Token(id, refresh_token, expiration);
+    public static Token issueRefreshToken(Long id, String refreshToken, Integer expiration) {
+        return new Token(id, refreshToken, expiration);
     }
 
-    public void updateRefreshToken(String refresh_token){
-        this.refresh_token = refresh_token;
+    public void updateRefreshToken(String refreshToken){
+        this.refreshToken = refreshToken;
     }
 }

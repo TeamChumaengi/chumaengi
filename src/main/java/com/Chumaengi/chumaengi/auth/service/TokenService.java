@@ -32,7 +32,7 @@ public class TokenService {
         String refresh_token = UUID.randomUUID().toString();
         Token token = tokenRepository.save(Token.issueRefreshToken(member.getId(), refresh_token, 6000));
 
-        return token.getRefresh_token();
+        return token.getRefreshToken();
     }
 
     public Token validRefreshToken(Member member, String refreshToken) throws Exception {
@@ -40,7 +40,7 @@ public class TokenService {
                 .orElseThrow(() -> ChumaengiException.type(AuthErrorCode.AUTH_EXPIRED_TOKEN));
 
         // Redis에 해당 유저의 토큰이 존재하지 않는 경우 (만료된 상태)
-        if (token.getRefresh_token() == null) {
+        if (token.getRefreshToken() == null) {
             throw ChumaengiException.type(AuthErrorCode.AUTH_EXPIRED_TOKEN);
         } else {
             // refresh 토큰 만료일자가 10초 미만이라면 새로운 refresh 토큰 부여
@@ -50,7 +50,7 @@ public class TokenService {
             }
 
             // 토큰이 같은지 비교, 다르다면 유효하지 않은 토큰
-            if(!token.getRefresh_token().equals(refreshToken)) {
+            if(!token.getRefreshToken().equals(refreshToken)) {
                 throw ChumaengiException.type(AuthErrorCode.AUTH_INVALID_TOKEN);
             } else {
                 return token;
@@ -60,15 +60,15 @@ public class TokenService {
 
 
     public TokenResponse refreshAccessToken(TokenResponse token) throws Exception {
-        String email = jwtProvider.getAccount(token.getAccess_token());
+        String email = jwtProvider.getAccount(token.getRefreshToken());
         Member member = memberFindService.findByEmail(email);
 
-        Token refreshToken = validRefreshToken(member, token.getRefresh_token());
+        Token refreshToken = validRefreshToken(member, token.getRefreshToken());
 
         if (refreshToken != null) {
             return TokenResponse.builder()
-                    .access_token(jwtProvider.createToken(email, member.getRoles()))
-                    .refresh_token(refreshToken.getRefresh_token())
+                    .accessToken(jwtProvider.createToken(email, member.getRoles()))
+                    .refreshToken(refreshToken.getRefreshToken())
                     .build();
         } else {
             throw ChumaengiException.type(AuthErrorCode.INVALID_PERMISSION);
