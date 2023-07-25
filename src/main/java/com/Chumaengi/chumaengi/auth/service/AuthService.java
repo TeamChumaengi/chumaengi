@@ -73,8 +73,8 @@ public class AuthService {
                 .nickname(member.getNickname())
                 .roles(member.getRoles())
                 .token(TokenResponse.builder()
-                        .access_token(jwtProvider.createToken(member.getEmail(), member.getRoles()))
-                        .refresh_token(member.getRefreshToken())
+                        .accessToken(jwtProvider.createToken(member.getEmail(), member.getRoles()))
+                        .refreshToken(member.getRefreshToken())
                         .build())
                 .build();
 

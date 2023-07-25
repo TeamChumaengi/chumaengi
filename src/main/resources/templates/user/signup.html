@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/login.css?v1}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/base.css?v1}">
+  <title>Log In</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&family=Skranji&display=swap');
+  </style>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+<form class="signup">
+  <div class="box">
+    <h1 style="margin-top: 15px;font-family: 'Skranji', cursive;">Chumaengi</h1>
+    <h4 style="margin: 0 0 40px 0;font-family: 'Noto Sans KR', sans-serif;">회원가입을 환영합니다</h4>
+    <div class="allOfElement">
+      <div>
+        <input id="userName" type="text" placeholder="이름" style="width:45%;height:40px"/>
+        <input id="userNickname" type="text" placeholder="닉네임" style="width:48%;height:40px"/>
+      </div>
+      <div>
+        <input id="userID" type="text" placeholder="아이디" style="width:45%;height:40px"/>
+        <input id="userPW" type="password" placeholder="비밀번호" style="width:48%;height:40px"/>
+      </div>
+      <button type="button" class="signupBtn" id="user-save" style="width:48%;height:40px;">등록</button>
+      <button type="button" class="signupBtn" id="user-cancel" style="width:48%;height:40px;">취소</button>
+    </div>
+  </div>
+</form>
+<footer th:insert="common/footer.html"></footer>
+<script src="/js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+</body>
+</html>

@@ -3,6 +3,7 @@ package com.Chumaengi.chumaengi.auth.controller;
 import com.Chumaengi.chumaengi.auth.controller.dto.AuthRequest;
 import com.Chumaengi.chumaengi.auth.controller.dto.AuthResponse;
 import com.Chumaengi.chumaengi.auth.service.AuthService;
+import com.Chumaengi.chumaengi.global.exception.ChumaengiException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,14 +15,24 @@ public class AuthApiController {
 
     @PostMapping("/signup")
     public ResponseEntity<Boolean> signup(@RequestBody AuthRequest request) {
-        authService.signup(request);
-        return ResponseEntity.ok().build();
+        try{
+            authService.signup(request);
+        } catch (ChumaengiException e){
+            return ResponseEntity.ok(false);
+        }
+        return ResponseEntity.ok(true);
     }
 
+    @CrossOrigin(origins = "http://localhost:8080", exposedHeaders = "Authorization")
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
-        authService.login(request);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<String> login(@RequestBody AuthRequest request) {
+        AuthResponse authResponse = null;
+        try{
+            authResponse = authService.login(request);
+        } catch (ChumaengiException e){
+            return ResponseEntity.ok(null);
+        }
+        return ResponseEntity.ok(authResponse.getToken().getAccessToken());
     }
 
     @GetMapping("/user/get")

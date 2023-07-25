@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css?v1}">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Nanum+Myeongjo:wght@800&display=swap"
+          rel="stylesheet">
+    <title>@chumaeng-i</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/swiper.css?v1}">
+    <script src="/js/jqeuery.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="/js/swiper.js"></script>
+    <script src="/js/default.js"></script>
+    <script src="https://kit.fontawesome.com/2d323a629b.js" crossorigin="anonymous"></script>
+    <script src="/js/Btn.js" defer></script>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <a class="headerLogo" href="/">@chumaeng-i</a>
+        <br>
+        <ul class="navbar__menu">
+            <li th:if="${session.userid == 'admin'}"><a th:href="@{/user/userfindAll}" class="header_txt">회원목록</a></li>
+            <li th:if="${session.userid == null}"><a th:href="@{/user/signup}" class="header_txt">회원가입</a></li>
+            <li th:if="${session.userid == null}"><a th:href="@{/user/login}" class="header_txt">로그인</a></li>
+            <li th:if="${session.userid != null}"><a th:href="@{/user/logout}" class="header_txt">로그아웃</a></li>
+            <li th:if="${session.userid != null}"><a th:href="@{/question/list}" class="header_txt">QnA 게시판</a></li>
+            <li th:if="${session.userid != null}"><a th:href="@{/information/list}" class="header_txt">정보 공유 게시판</a></li>
+            <li th:if="${session.userid != null}"><a th:href="@{/boardNotice/list}" class="header_txt">공지사항 게시판</a></li>
+            <li th:if="${session.userid != null}"><a th:href="@{|/user/mypage/${session.userid}|}" class="header_txt">마이페이지</a></li>
+        </ul>
+        <a href="#" class="navbar__toggleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+</header>
+<script src="/js/login.js"></script>
+<script src="/js/question.js"></script>
+<script src="/js/information.js"></script>
+<script src="/js/boardnotice.js"></script>
+</body>
+</html>
