@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css?v1}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/base.css?v1}">
+    <title>Log In</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&family=Skranji&display=swap');
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+<form>
+    <div class="box">
+        <img class="icon" src="/img/iconlogo.png" width="180px">
+        <br>
+        <h1 style="margin-bottom: 0;font-family: 'Skranji', cursive;">Chumaengi</h1>
+        <h4 style="margin: 0 0 40px 0;font-family: 'Noto Sans KR', sans-serif;">추수를 향해 달려가는 알맹이</h4>
+        <div class="allOfElement">
+            <div>
+                <input id="loginID" name="userid" type="text" placeholder="아이디" style="width:97%;height:40px"/>
+            </div>
+            <div>
+                <input id="loginPW" name="password" type="password" placeholder="비밀번호" style="width:97%;height:40px"/>
+            </div>
+            <div id="button">
+                <button type="button" class="signupBtn" id="user-login"
+                        style="width:98%;height:40px;">로그인</button>
+            </div>
+            <div>
+                <a href="/user/signup"
+                   style="text-decoration: none; margin-top: 10px;font-family: 'Noto Sans KR', sans-serif;color:#07553B">계정이 없으신가요?</a>
+            </div>
+        </div>
+    </div>
+</form>
+<footer th:insert="common/footer.html"></footer>
+<script src="/js/login.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+</body>
+</html>

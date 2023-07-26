@@ -1,0 +1,85 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#body-wrapper {
+    min-height: 95%;
+    position: relative;
+}
+
+#body-content {
+    margin: 0;
+    padding: 0;
+    height: 600px;
+}
+
+#mainthings {
+    min-height: 95%;
+    position: relative;
+}
+
+#otherthings {
+    position: absolute;
+    height: 60px;
+    bottom: 80px;
+    left: 0;
+}
+
+.footer_article {
+    text-align: center;
+    font-size: 10px;
+    color: /*var(--gray-color);*/ #cccccc;
+    padding: 10px 0;
+    width: 100%;
+    height: 50px; /* footer의 높이 */
+    bottom: 0;
+    left: 0;
+    margin-bottom: 20px;
+}
+
+.text {
+    position: absolute;
+    top: 70px;
+    left: 50px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.page {
+    margin: 0 48% 20px 48%;
+}
+
+@media (min-width: 720px) and (max-width:1800px) {
+    .pic {
+        margin-top: 55px;
+        position: relative;
+    }
+}
+
+@media (max-width:720px) {
+    #body-content {
+        margin: 0;
+        padding: 0;
+        height: 850px;
+    }
+
+    #search {
+        margin: 0;
+    }
+
+    .searchText {
+        width: 170px;
+    }
+
+    .page {
+        margin: 0 45% 20px 45%;
+    }
+
+    .pic {
+        position: relative;
+    }
+}

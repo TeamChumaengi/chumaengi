@@ -1,0 +1,146 @@
+@media (min-width: 720px) and (max-width:1800px) {
+    form {
+        width: 300px;
+        margin-top: 40px;
+        display: inline-block;
+        background-color: white;
+        padding: 50px 70px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #999;
+    }
+}
+
+.userDeleteForm {
+    width: 300px;
+    margin-top: 80px;
+    display: inline-block;
+    background-color: white;
+    padding: 50px 70px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #999;
+}
+
+.updateForm {
+    width: 300px;
+    margin-top: 30px;
+    display: inline-block;
+    background-color: white;
+    padding: 30px 70px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #999;
+}
+
+h1 {
+    margin-top: 0px;
+    font-size: 50px;
+    color: #07553B;
+    text-shadow: 2px 2px 2px #f2facf;
+}
+
+body {
+    text-align: center;
+    position: relative;
+    background-color: #f2facf;
+}
+
+#loginID, #loginPW {
+    color: #07553B;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.signupBtn {
+    margin-bottom: 10px;
+}
+
+.signupBtn, .loginBtn, #cancelBtn {
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #07553B;
+}
+
+.signupBtn:hover, #loginBtn:hover, #cancelBtn:hover {
+    box-shadow: 0 0 5px #999;
+}
+
+.allOfElement {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+}
+
+.allOfElement input {
+    color: #07553B;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.deleteForm {
+    height: 430px;
+}
+
+#theadColor {
+    background-color: #c1d1b4;
+}
+
+@media (max-width:720px) {
+    form {
+        width: 350px;
+        margin-top: 10px;
+        display: inline-block;
+        background-color: white;
+        border-radius: 5px;
+        padding: 40px 20px;
+    }
+
+    .signup {
+        width: 350px;
+        margin-top: 20px;
+        display: inline-block;
+        background-color: white;
+        border-radius: 5px;
+        padding: 70px 20px;
+    }
+
+    .find {
+        width: 350px;
+        margin-top: 30px;
+        display: inline-block;
+        background-color: white;
+        border-radius: 5px;
+        padding: 40px 20px;
+    }
+
+    .updateForm {
+        width: 300px;
+        margin-top: 20px;
+        display: inline-block;
+        background-color: white;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #999;
+    }
+
+    .icon {
+        width: 300px;
+        margin-bottom: 30px;
+    }
+
+    .deleteForm {
+        height: 560px;
+    }
+
+    .userDeleteForm {
+        width: 300px;
+        margin-top: 50px;
+        display: inline-block;
+        background-color: white;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #999;
+    }
+}
