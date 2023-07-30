@@ -43,8 +43,8 @@ public class TokenService {
         if (token.getRefreshToken() == null) {
             throw ChumaengiException.type(AuthErrorCode.AUTH_EXPIRED_TOKEN);
         } else {
-            // refresh 토큰 만료일자가 10초 미만이라면 새로운 refresh 토큰 부여
-            if(token.getExpiration() < 10) {
+            // refresh 토큰 만료일자가 120초 미만이라면 새로운 refresh 토큰 부여
+            if(token.getExpiration() < 120) {
                 token.updateRefreshToken(refreshToken);
                 tokenRepository.save(Token.issueRefreshToken(member.getId(), refreshToken, 6000));
             }

@@ -1,0 +1,186 @@
+/* Global */
+:root {
+    --main-color: #f2facf;
+    --sub-color: #F1ECC3;
+    --accent-color: #f2facf;
+    --gray-color: #BBBBBB;
+    --menu-background-color: rgba(17, 17, 17, 0.8);
+}
+/* 초기화 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    margin: 0;
+    font-family: 'Source Sans Pro';
+}
+
+a {
+    text-decoration: none;
+}
+
+.headerLogo {
+    color: white;
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header_txt {
+    color: white;
+}
+
+@media all and (min-width: 769px) {
+    /* Nav container */
+    .navbar {
+        top: 0;
+        left: 0;
+        right: 0;
+
+        height: 56px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 12px;
+        background-color: var(--menu-background-color);
+        position: fixed;
+
+        z-index: 100;
+    }
+
+    /* Logo with text */
+    .navbar__logo {
+        font-size: 24px;
+        font-family: 'Montserrat', sans-serif;
+        color: var(--accent-color);
+    }
+
+    .navbar__logo i {
+        color: var(--accent-color);
+    }
+
+    /* Menu */
+    .navbar__menu {
+        display: flex;
+        padding-left: 0;
+        list-style: none;
+        margin-bottom: 0;
+    }
+
+    .navbar__menu li {
+        padding: 8px 12px;
+        font-family: 'Nanum Myeongjo', serif;
+    }
+
+    .navbar__menu li:hover {
+        background-color: rgba(0,0,0,0.35);
+        border-radius: 4px;
+        font-family: 'Nanum Myeongjo', serif;
+    }
+
+    .navbar__icons {
+        list-style: none;
+        color: var(--accent-color);
+        display: flex;
+        padding-left: 0;
+    }
+
+    /* Icons */
+    .navbar__icons li {
+        padding: 8px 12px;
+    }
+
+    /* Toggle button */
+    .navbar__toggleBtn {
+        display: none;
+        position: absolute;
+        right: 32px;
+        font-size: 24px;
+        color: var(--accent-color);
+    }
+}
+
+
+/* 모바일버전 */
+@media screen and (max-width: 768px) {
+    /* Nav container */
+    .navbar {
+        /*position: fixed;*/
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 24px;
+    }
+
+    /* Menu */
+    .navbar__menu {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+
+    .navbar__menu a {
+        /* Fill in an entire line so that user can click on any space */
+        display: block;
+    }
+
+    /* Icons */
+    .navbar__icons {
+        display: none;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Toggle button */
+    .navbar__toggleBtn {
+        display: block;
+    }
+
+    /* When toggle button is clicked - active state */
+    .navbar__menu.active,
+    .navbar__icons.active {
+        display: flex;
+    }
+
+    .contents {
+        padding: 0 5%;
+    }
+
+    .nav-text {
+        color: black;
+    }
+
+    .headerLogo {
+        font-size: 15px;
+        color: black;
+    }
+
+    .header_txt {
+        color: black;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+P {
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+h3 {
+    font-size: 36px;
+    color: var(--main-color)font
+}
+
+
+
+.m-divider {
+    width: 20px;
+    margin: 0 auto;
+    margin-top: 77px;
+    background: var(--accent-color);
+}
