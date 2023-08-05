@@ -44,7 +44,7 @@ public class BoardApiController {
 
     // 게시판 목록 조회
     @GetMapping("/board/list/{categoryNum}")
-    public String questionlist(@PathVariable int categoryNum, Model model, @PageableDefault(page=0,size=10)
+    public String boardlist(@PathVariable int categoryNum, Model model, @PageableDefault(page=0,size=10)
     Pageable pageable) {
         String categoryName = null;
         if(categoryNum == 1){
