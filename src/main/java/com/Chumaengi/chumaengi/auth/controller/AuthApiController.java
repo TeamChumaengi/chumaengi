@@ -1,49 +1,39 @@
 package com.Chumaengi.chumaengi.auth.controller;
 
 import com.Chumaengi.chumaengi.auth.controller.dto.AuthRequest;
-import com.Chumaengi.chumaengi.auth.controller.dto.AuthResponse;
 import com.Chumaengi.chumaengi.auth.service.AuthService;
-import com.Chumaengi.chumaengi.global.exception.ChumaengiException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
+
+import static com.Chumaengi.chumaengi.auth.controller.AuthApiController.SessionConst.LOGIN_USERID;
+import static com.Chumaengi.chumaengi.auth.controller.AuthApiController.SessionConst.LOGIN_USER_ROLE;
 
 @RestController
 @RequiredArgsConstructor
 public class AuthApiController {
     private final AuthService authService;
+    public interface SessionConst {
+        String LOGIN_USERID = "userid";
+        String LOGIN_USER_ROLE = "role";
+    }
 
-    @PostMapping("/signup")
+    @PostMapping("/users/signup")
     public ResponseEntity<Boolean> signup(@RequestBody AuthRequest request) {
-        try{
-            authService.signup(request);
-        } catch (ChumaengiException e){
-            return ResponseEntity.ok(false);
-        }
+        authService.signup(request);
         return ResponseEntity.ok(true);
     }
 
-    @CrossOrigin(origins = "http://localhost:8080", exposedHeaders = "Authorization")
-    @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody AuthRequest request) {
-        AuthResponse authResponse = null;
-        try{
-            authResponse = authService.login(request);
-        } catch (ChumaengiException e){
-            return ResponseEntity.ok(null);
-        }
-        return ResponseEntity.ok(authResponse.getToken().getAccessToken());
-    }
+    @PostMapping("/users/login")
+    public ResponseEntity<Boolean> login(@RequestBody AuthRequest request, HttpSession httpSession) {
+        authService.login(request);
+        String role = authService.searchMemberRole(request.getEmail());
+        httpSession.setAttribute(LOGIN_USERID, request.getEmail());
+        httpSession.setAttribute(LOGIN_USER_ROLE, role);
+        System.out.println(role);
 
-    @GetMapping("/user/get")
-    public ResponseEntity<AuthResponse> getUser(@RequestParam String email) {
-        authService.getMember(email);
-        return ResponseEntity.ok().build();
-    }
-
-    @GetMapping("/admin/get")
-    public ResponseEntity<AuthResponse> getUserForAdmin(@RequestParam String email) {
-        authService.getMember(email);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(true);
     }
 }
