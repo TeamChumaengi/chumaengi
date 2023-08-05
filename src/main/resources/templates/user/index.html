@@ -37,7 +37,7 @@
         <br>
         <!-- 메뉴 -->
         <ul class="navbar__menu">
-            <li th:if="${session.userid == 'admin'}"><a id="changeScroll" class="nav-text nav-scroll-text" th:href="@{/user/userfindAll}">회원목록</a></li>
+            <li th:if="${session.role == 'ROLE_ADMIN'}"><a id="changeScroll" class="nav-text nav-scroll-text" th:href="@{/user/userfindAll}">회원목록</a></li>
             <li th:if="${session.userid == null}"><a id="changeScroll2" class="nav-text nav-scroll-text" th:href="@{/user/signup}">회원가입</a></li>
             <li th:if="${session.userid == null}"><a id="changeScroll3" class="nav-text nav-scroll-text" th:href="@{/user/login}">로그인</a></li>
             <li th:if="${session.userid != null}"><a id="changeScroll4" class="nav-text nav-scroll-text" th:href="@{/user/logout}">로그아웃</a></li>
@@ -104,24 +104,12 @@
 
 </div>
 </div>
-<hr class="m-divider" noshade>
 
-<div class="contents">
-    <div id="info">
-        <h3>Estimate</h3>
-        <p class="explain">쌀농사를 하는 농부들이 가장 민감하게 반응하는 쌀 값을 과거의 자료들을 토대로 앞으로의 쌀 값을 예측한 결과입니다.<br>
-            아래의 버튼을 클릭하여 예측 결과를 확인해보세요!</p>
-        <div class="btn_wrap">
-            <!-- //배포가 안되었기 때문에 localhost대신 ip주소가 들어간다. -->
-            <button class="learn-more"><a href="http://localhost:8501" class="btn-text">Learn More</a></button>
-        </div>
-    </div>
-</div>
 <br><br><br><br>
 <div class="footer">
     <div id="footer_article">
         <h3 class="footer_article">Kyonggi Univ. Department of Computer Science and Engineering,
-            <br>Class of 2018, Team ⓒChumaeng-i </h3>
+            <br>Class of 2023, Team ⓒChumaeng-i </h3>
     </div>
 </div>
 <div class="chatbot-box" id="message-box">
@@ -135,7 +123,6 @@
     <br><br><br>
     <p class="chatbotText3"><br>HeeSun Park
         <br>SunKyoung Yoon
-        <br>MyoGyeong Son
         <br>YuJin Sho
         <br>HoEun Yi</p>
 </div>
