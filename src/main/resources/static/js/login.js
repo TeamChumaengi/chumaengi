@@ -4,6 +4,9 @@ var main = {
         $('#user-login').on('click', function () {
             _this.login();
         });
+        $('#user-logout').on('click', function () {
+            location.href="/user/logout";
+        });
     },
     login: function (){
         var data = {

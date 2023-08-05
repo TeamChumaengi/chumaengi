@@ -21,14 +21,11 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
         // 세션에 로그인 정보가 있는지 확인
         if (session.getAttribute(SessionConst.LOGIN_USERID) == null) {
-            System.out.println("세션 로그인 null");
             // 로그인을 하지 않은 경우 로그인페이지로 이동
             session.setAttribute("redirectURL", requestURI);
             response.sendRedirect("/user/login");
-            System.out.println("세션 로그인 null2");
             return false;
         } else {
-            System.out.println("세션 로그인 상태");
             // 로그인 상태
             return true;
         }
