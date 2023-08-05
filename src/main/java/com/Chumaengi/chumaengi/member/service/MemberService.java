@@ -3,7 +3,6 @@ package com.Chumaengi.chumaengi.member.service;
 import com.Chumaengi.chumaengi.member.domain.Member;
 import com.Chumaengi.chumaengi.member.domain.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,13 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberService {
     private final MemberRepository memberRepository;
     private final MemberFindService memberFindService;
-    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public void update(Long memberId, String name, String password, String nickname) {
         Member member = memberFindService.findById(memberId);
 
-        member.update(name, passwordEncoder.encode(password), nickname);
+        member.update(name, password, nickname);
     }
 
     @Transactional

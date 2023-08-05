@@ -52,7 +52,7 @@ var main = {
         } else {
             $.ajax({
                 type: 'POST',
-                url: "/signup",
+                url: "/users/signup",
                 contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify(data)
             }).done(function (data) {

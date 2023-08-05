@@ -4,9 +4,6 @@ var main = {
         $('#user-login').on('click', function () {
             _this.login();
         });
-        $('#user-logout').on('click', function () {
-            location.href="/user/logout";
-        });
     },
     login: function (){
         var data = {
@@ -24,14 +21,12 @@ var main = {
         else{
             $.ajax({
                 type: 'POST',
-                url: "/login",
+                url: '/users/login',
                 contentType: 'application/json; charset=utf-8',
-                data: JSON.stringify(data)
+                data: JSON.stringify(data),
             }).done(function (data) {
-                if(data != null && data != ""){
-                    window.localStorage.setItem("accessToken",data);
+                if(data == true){
                     window.location.href = '/';
-                    alert(data+"님 환영합니다")
                 }else{
                     alert("아이디와 비밀번호를 확인해주세요.");
                     return false;
