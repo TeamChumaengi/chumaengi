@@ -62,7 +62,7 @@ public class Board extends BaseTimeEntity {
     }
 
     // 입력받은 문자열이 없다면 에러 반환, 있다면 문자열을 enum으로 변환
-    private static Category categoryStringToEnum(String categoryValue) {
+    public static Category categoryStringToEnum(String categoryValue) {
         return Arrays.stream(Category.values())
                 .filter(category -> category.getValue().equals(categoryValue))
                 .findFirst()

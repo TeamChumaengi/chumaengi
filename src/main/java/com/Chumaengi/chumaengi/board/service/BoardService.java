@@ -2,11 +2,14 @@ package com.Chumaengi.chumaengi.board.service;
 
 import com.Chumaengi.chumaengi.board.domain.Board;
 import com.Chumaengi.chumaengi.board.domain.BoardRepository;
+import com.Chumaengi.chumaengi.board.domain.Category;
 import com.Chumaengi.chumaengi.board.exception.BoardErrorCode;
 import com.Chumaengi.chumaengi.global.exception.ChumaengiException;
 import com.Chumaengi.chumaengi.member.domain.Member;
 import com.Chumaengi.chumaengi.member.service.MemberFindService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,6 +48,11 @@ public class BoardService {
         if (!board.getWriter().getId().equals(writerId)) {
             throw ChumaengiException.type(BoardErrorCode.USER_IS_NOT_BOARD_WRITER);
         }
+    }
+
+    @Transactional
+    public Page<Board> findByCategory(Category category, Pageable pageable){
+        return boardRepository.findByCategory(category, pageable);
     }
 }
 
