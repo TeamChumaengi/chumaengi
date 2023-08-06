@@ -1,5 +1,6 @@
 package com.Chumaengi.chumaengi.board.service;
 
+import com.Chumaengi.chumaengi.board.controller.dto.BoardListResponse;
 import com.Chumaengi.chumaengi.board.domain.Board;
 import com.Chumaengi.chumaengi.board.domain.BoardRepository;
 import com.Chumaengi.chumaengi.board.domain.Category;
@@ -51,8 +52,16 @@ public class BoardService {
     }
 
     @Transactional
-    public Page<Board> findByCategory(Category category, Pageable pageable){
-        return boardRepository.findByCategory(category, pageable);
+    public Page<BoardListResponse> findByCategory(Category category, Pageable pageable){
+        Page<Board> boards = boardRepository.findByCategory(category, pageable);
+        Page<BoardListResponse> boardList = boards.map(m -> BoardListResponse.builder()
+                .id(m.getId())
+                .title(m.getTitle())
+                .writer(m.getWriter().getNickname())
+                .view(m.getView())
+                .createdDate(m.getCreatedDate())
+                .build());
+        return boardList;
     }
 }
 

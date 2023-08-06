@@ -41,9 +41,9 @@
             <li th:if="${session.userid == null}"><a id="changeScroll2" class="nav-text nav-scroll-text" th:href="@{/user/signup}">회원가입</a></li>
             <li th:if="${session.userid == null}"><a id="changeScroll3" class="nav-text nav-scroll-text" th:href="@{/user/login}">로그인</a></li>
             <li th:if="${session.userid != null}"><a id="changeScroll4" class="nav-text nav-scroll-text" th:href="@{/user/logout}">로그아웃</a></li>
-            <li th:if="${session.userid != null}"><a id="changeScroll5" class="nav-text nav-scroll-text" th:href="@{/question/list}">QnA 게시판</a></li>
-            <li th:if="${session.userid != null}"><a id="changeScroll6" class="nav-text nav-scroll-text" th:href="@{/information/list}">정보 공유 게시판</a></li>
-            <li th:if="${session.userid != null}"><a id="changeScroll7" class="nav-text nav-scroll-text" th:href="@{/boardNotice/list}">공지사항 게시판</a></li>
+            <li th:if="${session.userid != null}"><a id="changeScroll5" class="nav-text nav-scroll-text" th:href="@{/api/boards/list/{categoryNum}(categoryNum = 1)}">QnA 게시판</a></li>
+            <li th:if="${session.userid != null}"><a id="changeScroll6" class="nav-text nav-scroll-text" th:href="@{/api/boards/list/{categoryNum}(categoryNum = 2)}">정보 공유 게시판</a></li>
+            <li th:if="${session.userid != null}"><a id="changeScroll7" class="nav-text nav-scroll-text" th:href="@{/api/boards/list/{categoryNum}(categoryNum = 3)}">공지사항 게시판</a></li>
             <li th:if="${session.userid != null}"><a th:href="@{|/user/mypage/${session.userid}|}" id="changeScroll8" class="nav-text nav-scroll-text">마이페이지</a></li>
         </ul>
         <!-- Toggle button -->
@@ -56,7 +56,6 @@
 <div class="swiper-container slider">
     <div class="swiper-wrapper">
         <div class="swiper-slide bg1">
-            <span>CAPSTONE</span>
             <p>@chumaeng-i</p>
             <br>
             <div id="weather">
@@ -66,7 +65,6 @@
             </div>
         </div>
         <div class="swiper-slide bg2">
-            <span>capstone</span>
             <p>@chumaeng-i</p>
             <div>
                 귀농인들에게 보다 많은 정보를 제공하고<br>
@@ -74,11 +72,9 @@
             </div>
         </div>
         <div class="swiper-slide bg3">
-            <span>project.</span>
             <p>@chumaeng-i</p>
             <div>
                 많은 관심 부탁드립니다<br>
-                문의는 lms 쪽지로 주세요!
             </div>
         </div>
     </div>

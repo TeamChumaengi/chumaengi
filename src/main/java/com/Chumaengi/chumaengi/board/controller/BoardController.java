@@ -1,6 +1,6 @@
 package com.Chumaengi.chumaengi.board.controller;
 
-import com.Chumaengi.chumaengi.board.domain.Board;
+import com.Chumaengi.chumaengi.board.controller.dto.BoardListResponse;
 import com.Chumaengi.chumaengi.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -33,7 +33,7 @@ public class BoardController {
             categoryName = "공지사항";
         }
 
-        Page<Board> list = boardService.findByCategory(categoryStringToEnum(categoryName),pageable);
+        Page<BoardListResponse> list = boardService.findByCategory(categoryStringToEnum(categoryName),pageable);
 
         //pageable의 페이지 시작은 0이므로 1로 보기위해 +1
         int nowPage=list.getPageable().getPageNumber()+1;
