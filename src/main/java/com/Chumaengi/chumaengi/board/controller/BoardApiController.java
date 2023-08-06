@@ -16,10 +16,11 @@ public class BoardApiController {
     private final BoardService boardService;
 
     @PostMapping
-    public ResponseEntity<Void> create(@PathVariable Long writerId,
+    public ResponseEntity<Boolean> create(@PathVariable Long writerId,
                                        @RequestBody @Valid BoardRequest request) {
-        Long boardId = boardService.create(writerId, request.getTitle(), request.getContent(), request.getCategory());
-        return ResponseEntity.created(URI.create("/detail/"+boardId)).build();
+        System.out.println(request.getTitle()+" "+request.getContent()+" "+request.getCategory());
+        boardService.create(writerId, request.getTitle(), request.getContent(), request.getCategory());
+        return ResponseEntity.ok(true);
     }
 
     @PatchMapping("/{boardId}")
