@@ -33,4 +33,19 @@ public class PageController {
         session.invalidate();
         return "user/index";
     }
+
+    @GetMapping("/boards/boardnotice_save")
+    public String boardnotice_save() {
+        return "boards/boardnotice_save";
+    }
+
+    @GetMapping("/boards/information_save")
+    public String information_save() {
+        return "boards/information_save";
+    }
+
+    @GetMapping("/boards/question_save")
+    public String question_save() {
+        return "boards/question_save";
+    }
 }

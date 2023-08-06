@@ -68,7 +68,7 @@
                  class="btn btn-primary" style="height:38px;width:51px;background-color: #07553B;border: none">
         </form>
         <div class="col-auto">
-          <a th:if="${session.role == 'ROLE_ADMIN'}" class="btn btn-primary" id="boardNotice_save"
+          <a th:if="${session.role == 'ROLE_ADMIN'}" class="btn btn-primary" th:href="@{/boards/boardnotice_save}"
              style="background-color: #07553B;color: white;border: none;height:38px;margin-top:2px" role="button">
             글쓰기
           </a>
@@ -84,5 +84,6 @@
 <footer th:insert="common/footer.html"></footer>
 <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="/js/board.js"></script>
 </body>
 </html>

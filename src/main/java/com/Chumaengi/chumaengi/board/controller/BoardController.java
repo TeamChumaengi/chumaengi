@@ -57,7 +57,7 @@ public class BoardController {
         }
     }
 
-    @GetMapping("detail/{boardId}")
+    @GetMapping("/detail/{boardId}")
     public String boardDetail(@PathVariable Long boardId, Model model){
         BoardResponse boardResponse = boardService.findById(boardId);
         model.addAttribute("board",boardResponse);
