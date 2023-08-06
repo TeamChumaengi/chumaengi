@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/base.css?v1}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/board.css?v1}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <title>게시판 - 글쓰기</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&family=Skranji&display=swap');
+    </style>
+    <link rel='stylesheet' href='/webjars/bootstrap/4.5.0/css/bootstrap.min.css'>
+</head>
+<body>
+<header th:insert="common/header.html"></header>
+<div class="pic"><img src="/img/rice1.png" width="100%" style="margin-bottom: 50px;height:200px;">
+    <span class="text" style="font-family: 'Noto Sans KR', sans-serif;">QnA</span></div>
+<div class="container">
+    <h2 style="margin: 20px 0 40px 0;font-family: 'Noto Sans KR', sans-serif">글 작성</h2>
+    <hr style="margin: 0 0 40px 0">
+    <div class="writeForm" >
+        <input type="hidden" name="id" class="form-control" id="inputId" th:value="${session.id}">
+        <input type="hidden" name="category" class="form-control" id="inputCategory" value="질문">
+        <div class="form-group row">
+            <label for="inputTitle" class="col-sm-2 col-form-label"><strong>제목</strong></label>
+            <div class="col-sm-10">
+                <input type="text" name="title" class="form-control" id="inputTitle">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputContent" class="col-sm-2 col-form-label"><strong>내용</strong></label>
+            <div class="col-sm-10">
+                <textarea type="text" name="content" class="form-control" id="inputContent"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-auto mr-auto"></div>
+            <div class="col-auto">
+                <input id="question_save" class="greenBtn" type="submit" value="등록">
+                <input id = "question_list" class="greenBtn" type="button" value="이전">
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:insert="common/footer.html" style="margin: 30px 0"></footer>
+<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="/js/question.js"></script>
+</body>
+</html>
