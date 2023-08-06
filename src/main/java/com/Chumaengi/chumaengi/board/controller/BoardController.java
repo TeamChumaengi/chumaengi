@@ -1,6 +1,7 @@
 package com.Chumaengi.chumaengi.board.controller;
 
 import com.Chumaengi.chumaengi.board.controller.dto.BoardListResponse;
+import com.Chumaengi.chumaengi.board.controller.dto.BoardResponse;
 import com.Chumaengi.chumaengi.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -48,11 +49,26 @@ public class BoardController {
         model.addAttribute("endPage",endPage);
 
         if(categoryNum == 1){
-            return "board/question_list";
+            return "boards/question_list";
         }else if(categoryNum == 2){
-            return "board/information_list";
+            return "boards/information_list";
         }else {
-            return "board/boardnotice_list";
+            return "boards/boardnotice_list";
+        }
+    }
+
+    @GetMapping("detail/{boardId}")
+    public String boardDetail(@PathVariable Long boardId, Model model){
+        BoardResponse boardResponse = boardService.findById(boardId);
+        model.addAttribute("board",boardResponse);
+
+        String category = boardResponse.getCategory().getValue();
+        if(category.equals("질문")){
+            return "boards/question_detail";
+        }else if(category.equals("정보공유")){
+            return "boards/information_detail";
+        }else {
+            return "boards/boardnotice_detail";
         }
     }
 
