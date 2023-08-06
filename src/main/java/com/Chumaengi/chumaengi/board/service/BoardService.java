@@ -1,6 +1,7 @@
 package com.Chumaengi.chumaengi.board.service;
 
 import com.Chumaengi.chumaengi.board.controller.dto.BoardListResponse;
+import com.Chumaengi.chumaengi.board.controller.dto.BoardResponse;
 import com.Chumaengi.chumaengi.board.domain.Board;
 import com.Chumaengi.chumaengi.board.domain.BoardRepository;
 import com.Chumaengi.chumaengi.board.domain.Category;
@@ -62,6 +63,21 @@ public class BoardService {
                 .createdDate(m.getCreatedDate())
                 .build());
         return boardList;
+    }
+
+    @Transactional
+    public BoardResponse findById(Long boardId){
+        Board board = boardFindService.findById(boardId);
+        return BoardResponse.builder()
+                .id(board.getId())
+                .title(board.getTitle())
+                .content(board.getContent())
+                .writer(board.getWriter().getNickname())
+                .view(board.getView())
+                .createdDate(board.getCreatedDate())
+                .category(board.getCategory())
+                .member(board.getWriter())
+                .build();
     }
 }
 
