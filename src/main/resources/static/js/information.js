@@ -59,7 +59,7 @@ var main = {
     },
 
     information_update: function (){
-        var boardId = $('#inputIid').val();
+        var boardId = $('#inputBoardId').val();
         var memberId = $('#inputId').val();
 
         var data = {
@@ -100,11 +100,11 @@ var main = {
 
     information_delete: function (){
         var memberId = $('#inputId').val();
-        var bid = $('#inputIid').val();
+        var boardId = $('#inputBoardId').val();
 
         $.ajax({
             type: 'DELETE',
-            url: "/api/boards/"+memberId+"/"+bid,
+            url: "/api/boards/"+memberId+"/"+boardId,
             dataType:"json",
             contentType: 'application/json; charset=utf-8',
         }).done(function () {
