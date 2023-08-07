@@ -14,6 +14,9 @@ var main = {
         $('#boardNotice_update').on('click', function () {
             _this.boardNotice_update();
         });
+        $('#boardNotice_delete').on('click',function (){
+            _this.boardNotice_delete();
+        });
     },
 
     boardNotice_save: function (){
@@ -93,6 +96,23 @@ var main = {
                 alert(JSON.stringify(error));
             })
         }
+    },
+
+    boardNotice_delete: function (){
+        var memberId = $('#inputId').val();
+        var bid = $('#inputBid').val();
+
+        $.ajax({
+            type: 'DELETE',
+            url: "/api/boards/"+memberId+"/"+bid,
+            dataType:"json",
+            contentType: 'application/json; charset=utf-8',
+        }).done(function () {
+            alert('삭제완료');
+            location.href="/api/boards/list/3";
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        })
     }
 }
 

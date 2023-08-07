@@ -30,8 +30,8 @@ public class BoardApiController {
     }
 
     @DeleteMapping("/{boardId}")
-    public ResponseEntity<Void> delete(@PathVariable Long writerId, @PathVariable Long boardId) {
+    public ResponseEntity<Boolean> delete(@PathVariable Long writerId, @PathVariable Long boardId) {
         boardService.delete(writerId, boardId);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(true);
     }
 }

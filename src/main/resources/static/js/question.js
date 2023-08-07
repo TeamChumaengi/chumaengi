@@ -14,6 +14,9 @@ var main = {
         $('#question_update').on('click', function () {
             _this.question_update();
         });
+        $('#question_delete').on('click',function (){
+            _this.question_delete();
+        });
     },
 
     question_save: function (){
@@ -93,6 +96,23 @@ var main = {
                 alert(JSON.stringify(error));
             })
         }
+    },
+
+    question_delete: function (){
+        var memberId = $('#inputId').val();
+        var bid = $('#inputQid').val();
+
+        $.ajax({
+            type: 'DELETE',
+            url: "/api/boards/"+memberId+"/"+bid,
+            dataType:"json",
+            contentType: 'application/json; charset=utf-8',
+        }).done(function () {
+            alert('삭제완료');
+            location.href="/api/boards/list/1";
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        })
     }
 }
 
