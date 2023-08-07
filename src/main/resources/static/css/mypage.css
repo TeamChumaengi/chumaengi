@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'Nanum Myeongjo', serif;
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    background-color: #f2facf;
+    margin: 0;
+}
+
+.title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 27px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.outer_container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80vw;
+    background:#f2facf;
+    margin-top: 75px;
+}
+.inner_container_title {
+    text-align: left;
+
+}
+.inner_container_title h2 {
+    font-family: 'East Sea Dokdo', cursive;
+    text-align: left;
+}
+
+.inner_container {
+    font-family: system-ui, serif;
+    font-size: 2rem;
+    padding: 3rem;
+    border-radius: 1rem;
+    background: white;
+    text-align: center;
+    width: 80%;
+}
+
+table {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+th, td {
+    text-align: center;
+    border-bottom: 1px solid #444444;
+    border-left: 1px solid #444444;
+    padding: 10px;
+}
+
+td:first-child {
+    border-left: none;
+    background-color: rgba(153, 184, 155, 0.51);
+    padding-right: 35px;
+}
+
+.footer_article {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 10px;
+    color: #cccccc;
+}
+
+.btn {
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    background-color: #f2facf;
+    width: 100px;
+    height: 25px;
+}
+.btn-text {
+    color:#202020;
+    font-size: 10px;
+}
+
+.btn:hover {
+    box-shadow: 0 0 5px #999;
+}
+
+.caption {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 20px;
+}
+
+/* ver. 모바일 */
+@media screen and (max-width: 768px) {
+    .outer_container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        min-width: 80vw;
+        background:#f2facf;
+        margin-top: 10px;
+    }
+
+    table, tr, td {
+        font-size: 15px;
+    }
+
+    .title {
+        margin-top: 10px;
+    }
+}
+
+/* ver. PC */
+@media all and (min-width: 769px){
+    table, tr, td {
+        font-size: 11px;
+    }
+
+    .title {
+        margin-top: 75px;
+    }
+}

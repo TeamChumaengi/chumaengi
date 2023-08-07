@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>My page</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/mypage.css?v1}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<header th:insert="common/header.html"></header>
+<div class="outer_container">
+  <div class="inner_container_title">
+    <h2>My Page</h2>
+  </div>
+  <div class="inner_container">
+    <figure style="margin-bottom: 30px">
+      <img src="/img/mypage.png" width="150px">
+      <figcaption class="caption">My Page</span></figcaption>
+    </figure>
+    <table>
+      <tr>
+        <td>아이디</td>
+        <td><span th:text="${member.email}"></span></td>
+      </tr>
+      <tr>
+        <td>이름</td>
+        <td><span th:text="${member.name}"></span></td>
+      </tr>
+      <tr>
+        <td>닉네임</td>
+        <td><span th:text="${member.nickname}"></span></td>
+      </tr>
+    </table>
+    <button button="button" class="btn"><a th:href="@{|/api/users/update/${member.id}|}" class="btn-text">수정</a></button>
+  </div>
+</div>
+<footer th:insert="common/footer.html"></footer>
+</body>
+</html>

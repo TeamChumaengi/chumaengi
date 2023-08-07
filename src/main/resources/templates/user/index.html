@@ -44,7 +44,7 @@
             <li th:if="${session.userid != null}"><a id="changeScroll5" class="nav-text nav-scroll-text" th:href="@{/api/boards/list/{categoryNum}(categoryNum = 1)}">QnA 게시판</a></li>
             <li th:if="${session.userid != null}"><a id="changeScroll6" class="nav-text nav-scroll-text" th:href="@{/api/boards/list/{categoryNum}(categoryNum = 2)}">정보 공유 게시판</a></li>
             <li th:if="${session.userid != null}"><a id="changeScroll7" class="nav-text nav-scroll-text" th:href="@{/api/boards/list/{categoryNum}(categoryNum = 3)}">공지사항 게시판</a></li>
-            <li th:if="${session.userid != null}"><a th:href="@{|/user/mypage/${session.userid}|}" id="changeScroll8" class="nav-text nav-scroll-text">마이페이지</a></li>
+            <li th:if="${session.userid != null}"><a th:href="@{|/api/users/detail/${session.id}|}" id="changeScroll8" class="nav-text nav-scroll-text">마이페이지</a></li>
         </ul>
         <!-- Toggle button -->
         <a href="#" class="navbar__toggleBtn">

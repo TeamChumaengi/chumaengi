@@ -36,7 +36,7 @@
             <li th:if="${session.userid != null}"><a th:href="@{/api/boards/list/{categoryNum}(categoryNum = 1)}" class="header_txt">QnA 게시판</a></li>
             <li th:if="${session.userid != null}"><a th:href="@{/api/boards/list/{categoryNum}(categoryNum = 2)}" class="header_txt">정보 공유 게시판</a></li>
             <li th:if="${session.userid != null}"><a th:href="@{/api/boards/list/{categoryNum}(categoryNum = 3)}" class="header_txt">공지사항 게시판</a></li>
-            <li th:if="${session.userid != null}"><a th:href="@{|/user/mypage/${session.userid}|}" class="header_txt">마이페이지</a></li>
+            <li th:if="${session.userid != null}"><a th:href="@{|/api/users/detail/${session.id}|}" class="header_txt">마이페이지</a></li>
         </ul>
         <a href="#" class="navbar__toggleBtn">
             <i class="fas fa-bars"></i>
