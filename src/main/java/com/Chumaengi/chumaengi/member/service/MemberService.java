@@ -1,5 +1,6 @@
 package com.Chumaengi.chumaengi.member.service;
 
+import com.Chumaengi.chumaengi.member.controller.dto.MemberResponse;
 import com.Chumaengi.chumaengi.member.domain.Member;
 import com.Chumaengi.chumaengi.member.domain.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,5 +26,17 @@ public class MemberService {
         Member member = memberFindService.findById(memberId);
 
         memberRepository.delete(member);
+    }
+
+    @Transactional
+    public MemberResponse findById(Long memberId){
+        Member member = memberFindService.findById(memberId);
+        return MemberResponse.builder()
+                .id(member.getId())
+                .name(member.getName())
+                .email(member.getEmail())
+                .password(member.getPassword())
+                .nickname(member.getNickname())
+                .build();
     }
 }
