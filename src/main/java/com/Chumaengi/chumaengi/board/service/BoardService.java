@@ -6,6 +6,7 @@ import com.Chumaengi.chumaengi.board.domain.Board;
 import com.Chumaengi.chumaengi.board.domain.BoardRepository;
 import com.Chumaengi.chumaengi.board.domain.Category;
 import com.Chumaengi.chumaengi.board.exception.BoardErrorCode;
+import com.Chumaengi.chumaengi.comment.service.CommentService;
 import com.Chumaengi.chumaengi.global.exception.ChumaengiException;
 import com.Chumaengi.chumaengi.member.domain.Member;
 import com.Chumaengi.chumaengi.member.service.MemberFindService;
@@ -22,6 +23,7 @@ public class BoardService {
     private final MemberFindService memberFindService;
     private final BoardFindService boardFindService;
     private final BoardRepository boardRepository;
+    private final CommentService commentService;
 
     @Transactional
     public Long create(Long writerId, String title, String content, String category){
@@ -77,6 +79,7 @@ public class BoardService {
                 .createdDate(board.getCreatedDate())
                 .category(board.getCategory())
                 .member(board.getWriter())
+                .commentList(commentService.findByBoard(board))
                 .build();
     }
 }
