@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.net.URI;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,10 +23,10 @@ public class BoardApiController {
     }
 
     @PatchMapping("/{boardId}")
-    public ResponseEntity<Void> update(@PathVariable Long writerId, @PathVariable Long boardId,
+    public ResponseEntity<Boolean> update(@PathVariable Long writerId, @PathVariable Long boardId,
                                        @RequestBody @Valid BoardRequest request) {
         boardService.update(writerId, boardId, request.getTitle(), request.getContent(), request.getCategory());
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(true);
     }
 
     @DeleteMapping("/{boardId}")

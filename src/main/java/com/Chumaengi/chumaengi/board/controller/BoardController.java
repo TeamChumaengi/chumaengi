@@ -81,4 +81,19 @@ public class BoardController {
         }
     }
 
+    // 게시글 수정 페이지 이동
+    @GetMapping("/update/{boardId}")
+    public String boardUpdate(@PathVariable Long boardId, Model model) {
+        BoardResponse boardResponse = boardService.findById(boardId);
+        model.addAttribute("board",boardResponse);
+
+        String category = boardResponse.getCategory().getValue();
+        if(category.equals("질문")){
+            return "boards/question_update";
+        }else if(category.equals("정보공유")){
+            return "boards/information_update";
+        }else {
+            return "boards/boardnotice_update";
+        }
+    }
 }

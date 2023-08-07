@@ -28,7 +28,7 @@
         <h2 class="mr-auto" style="margin: 0 0 10px 20px">정보공유</h2>
         <button th:if="${session.role == 'ROLE_USER' && session.id==board.member.id}"
                 class="signupBtn" type="button" style="background:none;border:none">
-            <a th:href="@{|//boards/information_update|}"
+            <a th:href="@{|/api/boards/update/${board.id}|}"
                style="text-decoration: none;color: lightslategray;padding:10px">
                 수정
             </a>
@@ -84,5 +84,6 @@
 <footer th:insert="common/footer.html"></footer>
 <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="/js/information.js"></script>
 </body>
 </html>
