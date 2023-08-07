@@ -2,6 +2,7 @@ package com.Chumaengi.chumaengi.comment.service;
 
 import com.Chumaengi.chumaengi.board.domain.Board;
 import com.Chumaengi.chumaengi.board.service.BoardFindService;
+import com.Chumaengi.chumaengi.comment.controller.dto.CommentListResponse;
 import com.Chumaengi.chumaengi.comment.domain.Comment;
 import com.Chumaengi.chumaengi.comment.domain.CommentRepository;
 import com.Chumaengi.chumaengi.comment.exception.CommentErrorCode;
@@ -11,6 +12,9 @@ import com.Chumaengi.chumaengi.member.service.MemberFindService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -44,6 +48,21 @@ public class CommentService {
         Comment childComment = Comment.createComment(writer, board, parentComment, content);
 
         return commentRepository.save(childComment).getId();
+    }
+
+    @Transactional
+    public List<CommentListResponse> findByBoard(Board board){
+        List<Comment> comments = commentRepository.findByBoard(board);
+        List<CommentListResponse> commentList = comments.stream().map(m -> CommentListResponse.builder()
+                .id(m.getId())
+                .content(m.getContent())
+                .writer(m.getWriter().getNickname())
+                .createdDate(m.getCreatedDate())
+                .member(m.getWriter())
+                .board(m.getBoard())
+                .build())
+                .collect(Collectors.toList());
+        return commentList;
     }
 
     private void validateWriter(Long commentId, Long writerId) {
