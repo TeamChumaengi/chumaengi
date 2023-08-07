@@ -64,6 +64,7 @@ public class BoardController {
     public String boardDetail(@PathVariable Long boardId, Model model){
         BoardResponse boardResponse = boardService.findById(boardId);
         List<CommentListResponse> commentList = boardResponse.getCommentList();
+        System.out.println(commentList.get(0).getContent());
         if(commentList != null && !commentList.isEmpty()){
             model.addAttribute("commentList",commentList);
         }

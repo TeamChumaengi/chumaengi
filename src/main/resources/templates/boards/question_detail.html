@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css?v1}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/base.css?v1}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/board.css?v1}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <title>Question Detail</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&family=Skranji&display=swap');
+    </style>
+    <link rel='stylesheet' href='/webjars/bootstrap/4.5.0/css/bootstrap.min.css'>
+    <script>
+        $('.toggleDiv').on('click',function (){
+            this.next().toggle();
+        });
+    </script>
+</head>
+<body>
+<header th:insert="common/header.html"></header>
+<div class="container">
+    <div class="row" id="detailTop">
+        <h2 class="mr-auto" style="margin: 0 0 10px 20px">QnA</h2>
+        <button th:if="${session.role == 'ROLE_USER' && session.id==board.member.id}"
+                class="signupBtn" type="button" style="background:none;border:none;padding:10px">
+            <a th:href="@{|/boards/question_update|}"
+               style="text-decoration: none;color: lightslategray">
+                수정
+            </a>
+        </button>
+        <button id="question_list" type="button"
+                style="background:none;border:none;color: lightslategray;padding:10px;margin:10px 0">이전</button>
+    </div>
+    <table class="table">
+        <thead>
+        <tr class="text-center">
+            <th scope="col">글 번호: <span th:text="${board.id}"></span></th>
+            <th scope="col">제목: <span th:text="${board.title}"></span></th>
+            <th scope="col">작성자: <span th:text="${board.writer}"></span></th>
+        </tr>
+        </thead>
+    </table>
+    <h6 style="float: right;color: #999999">
+        작성일자: <span th:text="${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm')}"></span></h6>
+    <br>
+    <div style="height: 600px;">
+        <h3 style="margin-top: 50px"><span th:text="${board.content}"></span></h3>
+    </div>
+    <input type="hidden" name="qid" class="form-control" id="inputQid"  th:value="${board.id}" readonly>
+    <input type="hidden" name="userid" class="form-control" id="inputAuthor"  th:value="${session.userid}" readonly>
+    <div class="card" style="padding-bottom:10px">
+        <h3 style="padding: 20px 20px 0 30px">Comments</h3>
+        <ul class="list-group-flush" th:each="comment : ${commentList}" style="padding:0;margin:16px">
+            <li class="list-group-item">
+                <span>
+                    <input type="hidden" name="aid" class="form-control" id="inputAid"  th:value="${comment.id}" readonly>
+                    <span style="font-size: small" th:text="${comment.writer}"></span>
+                    <span style="font-size: xx-small"
+                          th:text="${#temporals.format(comment.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+                </span>
+                <button th:if="${session.role == 'ROLE_USER' && session.id == comment.member.id}"
+                        type="button" style="background:none;border:none;">
+                    <a th:href="@{|/api/comments/${session.id}/${comment.id}|}">❌</a></button>
+                <div><span th:text="${comment.content}"></span></div>
+            </li>
+        </ul>
+    </div>
+    <br/>
+    <div class="card" th:if="${session.role == 'ROLE_USER'}">
+        <div class="col-sm-20" id="commentCard">
+                <textarea id="inputComment" type="text" name="comment" class="form-control"
+                          placeholder="댓글을 입력하세요" style="height:150px"></textarea>
+        </div>
+        <div class="col-auto ml-auto">
+            <input id = "answer-save" class="signupBtn" type="button" value="등록"
+                   style="margin-bottom: 20px;width:100px;height:38px">
+        </div>
+    </div>
+</div>
+<footer th:insert="common/footer.html"></footer>
+<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
