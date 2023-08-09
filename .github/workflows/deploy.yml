@@ -1,0 +1,53 @@
+name: Deploy to Oracle Registry
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
+  OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
+  OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
+  OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
+  OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
+  OCI_CLI_PASSPHRASE: ${{ secrets.OCI_CLI_PASSPHRASE }}
+  OCI_CLI_USERNAME: ${{ secrets.OCI_CLI_USERNAME }}
+  OCI_CLI_PASSWORD: ${{ secrets.OCI_AUTH_TOKEN }}
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Get or create an OCIR Repository
+        uses: oracle-actions/get-ocir-repository@v1.2.1
+        id: get-ocir-repository
+        with:
+          name: oraclelinux
+          compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
+
+      - name: Log into OCIR
+        uses: oracle-actions/login-ocir@v1.2.1
+        id: login-ocir
+        with:
+          auth_token: ${{ secrets.OCI_AUTH_TOKEN }}
+
+      - name: Log into OCI
+        id: login-oci
+        run: |
+          docker login iad.ocir.io --username='idfoej8orgns/bakiriee22@gmail.com' --password='vh+4:0LYYTOi58p3W].9'
+
+      - name: Tag and Push Image
+        id: tag-and-push-image
+        env:
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker pull nginx:latest
+          docker tag "nginx:latest" "iad.ocir.io/idfoej8orgns/chumaengitest:$IMAGE_TAG"
+          docker push "iad.ocir.io/idfoej8orgns/chumaengitest:$IMAGE_TAG"
