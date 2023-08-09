@@ -25,5 +25,5 @@ jobs:
         env:
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker buildx build --platform=linux/amd64 -t -f ./Dockerfile "iad.ocir.io/idzcwuebajei/chumaengi-container-repo:$IMAGE_TAG" .
+          docker buildx build --platform=linux/amd64 -t "iad.ocir.io/idzcwuebajei/chumaengi-container-repo:$IMAGE_TAG" -f ./Dockerfile .
           docker push "iad.ocir.io/idzcwuebajei/chumaengi-container-repo:$IMAGE_TAG"
