@@ -22,4 +22,13 @@ public class MemberController {
 
         return "user/member_detail";
     }
+
+    @GetMapping("/update/{memberId}")
+    public String MemberUpdate(@PathVariable Long memberId, Model model){
+        MemberResponse memberResponse = memberService.findById(memberId);
+        model.addAttribute("member",memberResponse);
+
+        return "user/member_update";
+    }
+
 }

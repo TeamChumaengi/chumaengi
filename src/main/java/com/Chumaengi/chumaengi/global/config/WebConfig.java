@@ -14,9 +14,8 @@ public class WebConfig implements WebMvcConfigurer {
                 .order(1)
                 .addPathPatterns("/**")
                 // 현재 프로젝트의 모든 주소에 대해 인터셉터를 적용
-                .excludePathPatterns("/", "/user/signup","/user/login",
-                        "/users/signup","/users/login",
-                        "/img/**","/user/logout" ,"/css/**","/js/**","/api/**",
+                .excludePathPatterns("/", "/user/signup", "/users/signup","/users/login",
+                        "/img/**","/user/**" ,"/css/**","/js/**","/api/**",
                         "/boards/**", "/user/**");
     }
 
