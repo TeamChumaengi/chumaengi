@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/login.css?v1}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/base.css?v1}">
+  <title>Log In</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&family=Skranji&display=swap');
+  </style>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+<form class="updateForm">
+  <div class="box">
+    <img class="icon" src="/img/iconlogo.png" width="180px">
+    <br>
+    <h1 style="margin-bottom: 0;font-family: 'Skranji', cursive;">Chumaengi</h1>
+    <h4 style="margin: 0 0 20px 0;font-family: 'Noto Sans KR', sans-serif;">추수를 향해 달려가는 알맹이</h4>
+    <br>
+    <div class="allOfElement">
+      <div>
+        <input id="inputId" type="hidden" th:value="${member.id}"readonly style="width:45%;height:40px"/>
+        <input id="inputName" type="text" th:value="${member.name}"readonly style="width:45%;height:40px"/>
+        <input id="inputNickname" type="text" th:value="${member.nickname}" style="width:48%;height:40px"/>
+      </div>
+      <div>
+        <input id="inputUserID" type="text" th:value="${member.email}" readonly  style="width:45%;height:40px"/>
+        <input id="inputPassword" type="password"  th:value="${member.password}" style="width:48%;height:40px"/>
+      </div>
+      <button id="member_detail" button="button" class="signupBtn" style="width:33%;height:40px;">
+        <a th:href="@{|/api/users/detail/${member.id}|}" class="btn-text">취소</a></button>
+      <button id="member_update" type="button" class="signupBtn" style="width:33%;height:40px;">수정</button>
+      <button id="member_delete" type="button" class="signupBtn" style="width:30%;height:40px;" >탈퇴</button>
+    </div>
+  </div>
+</form>
+<footer th:insert="common/footer.html"></footer>
+<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/member.js"></script>
+</body>
+</html>
